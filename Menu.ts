@@ -1,4 +1,4 @@
-import readlinesync, { questionInt } from "readline-sync";
+import readlinesync from "readline-sync";
 import { colors } from "./src/util/Colors";
 import { Conta } from "./src/model/Conta";
 import { ContaCorrente } from './src/model/ContaCorrente';
