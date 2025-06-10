@@ -1,18 +1,25 @@
 import readlinesync from "readline-sync";
 import { colors } from "./src/util/Colors";
 import { Conta } from "./src/model/Conta";
+import { ContaCorrente } from './src/model/ContaCorrente';
+import { ContaPoupanca } from './src/model/ContaPoupanca';
 
 export function main() {
     let opcao: number;
 
-const conta:Conta=new Conta(1,123,1,'Adriana',10000);
+    const contacorrente: ContaCorrente = new ContaCorrente(2, 123, 1, "Mariana", 15000, 1000);
+    contacorrente.visualizar();
+    contacorrente.sacar(2000);
+    contacorrente.visualizar();
+    contacorrente.depositar(1000);
+    contacorrente.visualizar();
 
-conta.sacar(10500);
-conta.visualizar();
-conta.depositar(5000);
-conta.visualizar();
-conta.sacar(10500);
-conta.visualizar();
+    const contapoupanca: ContaPoupanca = new ContaPoupanca(3, 123, 2, "Victor", 1000, 10);
+    contapoupanca.visualizar();
+    contapoupanca.sacar(200);
+    contapoupanca.visualizar();
+    contapoupanca.depositar(1000);
+    contapoupanca.visualizar();
 
     while (true) {
         console.log(colors.bg.blue,colors.fg.white,"\n*****************************************************");
@@ -61,15 +68,9 @@ conta.visualizar();
                 break;
             case 6:
                 console.log(colors.fg.greenstrong,"\n\nSaque\n\n",colors.reset);
-                const saque:number=readlinesync.questionFloat(`Digite valor do saque: `)
-                conta.sacar(saque);
-                conta.visualizar();
                 break;
             case 7:
                 console.log(colors.fg.greenstrong,"\n\nDepósito\n\n",colors.reset);
-                const deposito:number=readlinesync.questionFloat(`Digite valor do deposito: `)
-                conta.depositar(deposito);
-                conta.visualizar();
                 break;
             case 8:
                 console.log(colors.fg.greenstrong,"\n\nTransferência entre Contas\n\n",colors.reset);
